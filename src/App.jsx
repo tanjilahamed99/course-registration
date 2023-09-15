@@ -3,8 +3,19 @@ import './App.css'
 import Header from './component/Header/Header'
 import Cards from './component/cards/cards'
 import Cart from './component/cart/Cart'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 function App() {
+
+  const hours = () => {
+    toast.error('hours finished');
+  };
+
+  const multipleAdded = () => {
+    toast.error('Already added this course');
+  };
 
   const [carts, setCarts] = useState([]);
   const [total, setTotal] = useState(0);
@@ -15,16 +26,16 @@ function App() {
   const handleCart = (card, price, credit, id) => {
     const reWrite = carts.find((item) => item.id === id)
     if (reWrite) {
-      return alert('already booked')
+      multipleAdded();
     } else {
-      if (remaining <= 0) {
-        return alert('time ses')
+      if (remaining <= 0 || credits >= 20) {
+        hours()
       } else {
         setCarts([...carts, card])
         setTotal(total + price);
-        setCredit(credits + credit)
         const newRemaining = remaining - credit;
         setRemaining(newRemaining)
+        setCredit(credits + credit)
       }
     }
   }
@@ -35,6 +46,7 @@ function App() {
       <Header></Header>
       <div className='flex flex-col-reverse md:flex-row gap-2'>
         <Cards handleCart={handleCart}></Cards>
+        <ToastContainer position='top-left'/>
         <Cart carts={carts} total={total} credits={credits} remaining={remaining}></Cart>
       </div>
     </div>

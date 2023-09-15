@@ -13,7 +13,7 @@ const Cards = ({ handleCart }) => {
     }, [])
 
     return (
-        <div className="w-[90%] md:w-[50%] lg:w-[75%] mx-auto">
+        <div className="w-[90%] md:w-[60%] lg:w-[71%] xl:w-[75%] mx-auto md:pl-4 lg:pl-0">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {
                     cards.map((card, idx) => <Card key={idx} card={card} handleCart={handleCart}></Card>)
