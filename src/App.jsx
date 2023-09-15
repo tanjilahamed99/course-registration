@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 function App() {
 
   const hours = () => {
-    toast.error('hours finished');
+    toast.error('You dont have enough credit hour');
   };
 
   const multipleAdded = () => {
@@ -24,11 +24,12 @@ function App() {
 
 
   const handleCart = (card, price, credit, id) => {
+    let hourCheck = credits + credit;
     const reWrite = carts.find((item) => item.id === id)
     if (reWrite) {
       multipleAdded();
     } else {
-      if (remaining <= 0 || credits >= 20) {
+      if (remaining < 0 || hourCheck > 20) {
         hours()
       } else {
         setCarts([...carts, card])
@@ -46,7 +47,7 @@ function App() {
       <Header></Header>
       <div className='flex flex-col-reverse md:flex-row gap-2'>
         <Cards handleCart={handleCart}></Cards>
-        <ToastContainer position='top-left'/>
+        <ToastContainer />
         <Cart carts={carts} total={total} credits={credits} remaining={remaining}></Cart>
       </div>
     </div>
