@@ -12,12 +12,21 @@ function App() {
   const [remaining, setRemaining] = useState(20)
 
 
-  const handleCart = (card, price, credit) => {
-    setCarts([...carts, card])
-    setTotal(total + price);
-    setCredit(credits + credit)
-    const newRemaining = remaining - credit;
-    setRemaining(newRemaining)
+  const handleCart = (card, price, credit, id) => {
+    const reWrite = carts.find((item) => item.id === id)
+    if (reWrite) {
+      return alert('already booked')
+    } else {
+      if (remaining <= 0) {
+        return alert('time ses')
+      } else {
+        setCarts([...carts, card])
+        setTotal(total + price);
+        setCredit(credits + credit)
+        const newRemaining = remaining - credit;
+        setRemaining(newRemaining)
+      }
+    }
   }
 
 

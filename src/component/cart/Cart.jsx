@@ -21,9 +21,9 @@ const Cart = ({ carts,total,credits,remaining }) => {
 
 Cart.propTypes = {
     carts: PropTypes.array,
-    total:PropTypes.array,
-    credits:PropTypes.array,
-    remaining:PropTypes.array
+    total:PropTypes.number,
+    credits:PropTypes.number,
+    remaining:PropTypes.number
 };
 
 export default Cart;
