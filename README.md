@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 =======
 # Add at least 3 Project features
        1. Dynamically show the card from api,
@@ -13,6 +13,4 @@
      3. another 3 use for  keep the number values from  onclick function
      4. all the state values change by selected button.2
 
-
->>>>>>> 8463ffaac8f7eaee941f92f622439c67f1b7f040
 
